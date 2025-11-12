@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BISA MEDIA.MCN</title>
+  <link rel="icon" type="image/png" href="images/Logo_Bisa.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f4f7fc;
+      color: #222;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 55vw;
+      background: #fff;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      margin: 40px 0;
+      overflow: hidden;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin: 10px 0 0 20px;
+      background-color: #fff;
+      color: #004aad;
+      text-decoration: none;
+      padding: 2px 7px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.2s ease;
+      border: 2px solid #004aad;
+    }
+
+    .back-btn:hover {
+      background-color: #003a8c;
+      transform: scale(1.05);
+    }
+
+
+    .topbar-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cta-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #004aad;
+      color: #fff;
+      border-radius: 15px;
+      padding: 25px 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 85%;
+      margin: 25px auto;
+      transition: transform 0.2s;
+    }
+
+    /* Bagian kiri: logo + info brand */
+    .cta-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      /* jarak antara logo dan teks */
+    }
+
+    .brand-logo {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #fff;
+    }
+
+    .brand-info h3 {
+      margin-bottom: 8px;
+      /* jarak nama brand ke kategori */
+      font-size: 1.3rem;
+    }
+
+    .brand-info p {
+      font-size: 1rem;
+    }
+
+    /* Bagian saldo di kanan */
+    .saldo-box {
+      text-align: right;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .saldo-box h4 {
+      color: #fff;
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+
+    .saldo-box .saldo-value {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .cta-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+
+      .cta-left {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .saldo-box {
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+
+    /* LOGO SECTION */
+    .logo-section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      padding: 40px;
+      justify-items: center;
+    }
+
+    .logo-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #f8f9ff;
+      border: 2px solid #004aad;
+      border-radius: 10px;
+      padding: 15px;
+      width: 100%;
+      max-width: 180px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .logo-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .logo-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #004aad;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .logo-price {
+      font-size: 13px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    /* FOOTER */
+    footer {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+    }
+
+    /* Background yang blur (pakai layer pseudo-element) */
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('images/Bagian_Bawah.jpg') center/100% auto no-repeat;
+      filter: blur(2px);
+      /* hanya background yang blur */
+      z-index: 0;
+    }
+
+    /* Pastikan teks dan ikon di atas background blur */
+    footer p,
+    footer .social-links {
+      position: relative;
+      z-index: 1;
+    }
+
+    .social-links {
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+      transition: transform 0.2s ease;
+    }
+
+    .tiktok-icon {
+      filter: brightness(0) invert(1);
+      /* putihkan TikTok */
+    }
+
+    .wa-icon {
+      filter: none;
+      /* biarkan hijau alami */
+    }
+
+    .icon:hover {
+      transform: scale(1.2);
+    }
+
+    .social-links {
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+      transition: transform 0.2s ease;
+    }
+
+    .icon:hover {
+      transform: scale(1.2);
+    }
+
+    .tiktok-icon {
+      filter: brightness(0) invert(1);
+    }
+
+    /* POPUP KONFIRMASI */
+    #popupConfirm {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #popupConfirm .popup-content {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 300px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    #popupConfirm p {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    #popupConfirm button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    #btnYes {
+      background: #004aad;
+      color: white;
+    }
+
+    #btnNo {
+      background: #ccc;
+      color: black;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .container {
+        width: 90vw;
+      }
+
+      .logo-section {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 95vw;
+      }
+
+      .cta-box {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .logo-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 30px 20px;
+      }
+
+      .logo-item {
+        max-width: 160px;
+        width: 100%;
+      }
+
+      .logo-item img {
+        width: 90px;
+        height: 90px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="topbar">
+      <img src="images/Bagian_Atas.jpg" alt="Topbar" class="topbar-img">
+    </header>
+
+    <a href="logoB.html" class="back-btn">← Kembali</a>
+
+    <div class="cta-box">
+      <div class="cta-left">
+        <img src="images/logo_brand.png" alt="Foto Profil" class="brand-logo">
+        <div class="brand-info">
+          <h3>Nama Brand</h3>
+          <p>Kategori</p>
+        </div>
+      </div>
+
+      <div class="saldo-box">
+        <h4>Saldo Anda</h4>
+        <p class="saldo-value">Rp 50.000</p>
+      </div>
+    </div>
+
+
+    <!-- LOGO SECTION -->
+    <section class="logo-section">
+      <div class="logo-item">
+        <img src="images/thumbnail_sampel.png" alt="Logo Sampel 1">
+        <div class="logo-name">Sampel 1</div>
+        <div class="logo-price">Rp 10.000</div>
+      </div>
+      <div class="logo-item">
+        <img src="images/thumbnail_sampel.png" alt="Logo Sampel 2">
+        <div class="logo-name">Sampel 2</div>
+        <div class="logo-price">Rp 10.000</div>
+      </div>
+      <div class="logo-item">
+        <img src="images/thumbnail_sampel.png" alt="Logo Sampel 3">
+        <div class="logo-name">Sampel 3</div>
+        <div class="logo-price">Rp 10.000</div>
+      </div>
+      <div class="logo-item">
+        <img src="images/thumbnail_sampel.png" alt="Logo Sampel 4">
+        <div class="logo-name">Sampel 4</div>
+        <div class="logo-price">Rp 10.000</div>
+      </div>
+      <div class="logo-item">
+        <img src="images/thumbnail_sampel.png" alt="Logo Sampel 5">
+        <div class="logo-name">Sampel 5</div>
+        <div class="logo-price">Rp 10.000</div>
+      </div>
+      <div class="logo-item">
+        <img src="images/thumbnail_sampel.png" alt="Logo Sampel 6">
+        <div class="logo-name">Sampel 6</div>
+        <div class="logo-price">Rp 10.000</div>
+      </div>
+    </section>
+
+    <!-- POPUP -->
+    <div id="popupConfirm">
+      <div class="popup-content">
+        <p id="popupText"></p>
+        <div style="display:flex; justify-content:center; gap:15px;">
+          <button id="btnYes">Ya</button>
+          <button id="btnNo">Tidak</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 BISA MEDIA.MCN. All Rights Reserved.</p>
+      <div class="social-links">
+        <a href="https://www.tiktok.com/@bisamedia.mcn" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok" class="icon tiktok-icon">
+        </a>
+        <a href="https://wa.me/6287847687691?text=Halo%20Admin" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="icon">
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    let saldo = 50000;
+    const saldoElement = document.querySelector('.saldo-value');
+    const popup = document.getElementById('popupConfirm');
+    const popupText = document.getElementById('popupText');
+    const btnYes = document.getElementById('btnYes');
+    const btnNo = document.getElementById('btnNo');
+
+    document.querySelectorAll('.logo-item').forEach(item => {
+      item.addEventListener('click', function () {
+        const nama = this.querySelector('.logo-name').textContent;
+        const hargaText = this.querySelector('.logo-price').textContent.replace(/[^\d]/g, '');
+        const harga = parseInt(hargaText);
+        popup.style.display = 'flex';
+        popupText.textContent = `Apakah anda ingin mengambil sampel ${nama} dengan harga Rp ${harga.toLocaleString()} ?`;
+
+        btnYes.onclick = () => {
+          if (saldo >= harga) {
+            saldo -= harga;
+            saldoElement.textContent = `Rp ${saldo.toLocaleString()}`;
+            alert(`Berhasil mengambil ${nama}. Saldo Anda sekarang Rp ${saldo.toLocaleString()}.`);
+          } else {
+            alert('Saldo anda tidak cukup!');
+          }
+          popup.style.display = 'none';
+        };
+
+        btnNo.onclick = () => {
+          popup.style.display = 'none';
+        };
+      });
+    });
+  </script>
+</body>
+
+</html>

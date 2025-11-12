@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BISA MEDIA.MCN</title>
+  <link rel="icon" type="image/png" href="images/Logo_Bisa.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f4f4f4;
+    }
+
+    .container {
+      width: 55vw;
+      background: #fff;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      margin: 40px auto;
+      overflow: hidden;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin: 10px 0 0 20px;
+      background-color: #fff;
+      color: #004aad;
+      text-decoration: none;
+      padding: 2px 7px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.2s ease;
+      border: 2px solid #004aad;
+    }
+
+    .back-btn:hover {
+      background-color: #003a8c;
+      transform: scale(1.05);
+    }
+
+    .topbar-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .info-section {
+      width: 100%;
+      padding: 20px 40px;
+    }
+
+    .seat-box {
+      width: 100%;
+      background-color: #004aad;
+      color: white;
+      padding: 25px 10px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .seat-box h5 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .seat-number {
+      background: white;
+      color: #004aad;
+      font-weight: 700;
+      font-size: 26px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    /* WRAPPER kategori */
+    .category-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 10px 0;
+      margin-top: 20px;
+    }
+
+    .category-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* BAGIAN FLEX tombol */
+    .category-section {
+      display: inline-flex;
+      gap: 10px;
+      padding: 0 15px;
+      justify-content: center; /* default: center kalau muat */
+      width: max-content;
+      min-width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .category-btn {
+      background-color: #004aad;
+      color: white;
+      border: 2px solid #004aad;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .category-btn:hover {
+      background-color: #003380;
+    }
+
+    .category-btn.active {
+      background-color: white;
+      color: #004aad;
+      border: 2px solid #004aad;
+    }
+
+    .logo-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      padding: 40px 0;
+      /* border-bottom: 3px solid #004aad; */
+    }
+
+    .logo-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #f8f9ff;
+      border: 2px solid #004aad;
+      border-radius: 10px;
+      padding: 15px;
+      width: 150px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .logo-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #004aad;
+      text-align: center;
+    }
+
+    /* FOOTER */  
+    footer {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+    }
+
+    /* Background yang blur (pakai layer pseudo-element) */
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('images/Bagian_Bawah.jpg') center/100% auto no-repeat;
+      filter: blur(2px);
+      /* hanya background yang blur */
+      z-index: 0;
+    }
+
+    /* Pastikan teks dan ikon di atas background blur */
+    footer p,
+    footer .social-links {
+      position: relative;
+      z-index: 1;
+    }
+
+    .social-links {
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+      transition: transform 0.2s ease;
+    }
+
+    .tiktok-icon {
+      filter: brightness(0) invert(1);
+      /* putihkan TikTok */
+    }
+
+    .wa-icon {
+      filter: none;
+      /* biarkan hijau alami */
+    }
+
+    .icon:hover {
+      transform: scale(1.2);
+    }
+
+    .social-links {
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+      transition: transform 0.2s ease;
+    }
+
+    .icon:hover {
+      transform: scale(1.2);
+    }
+
+    .tiktok-icon {
+      filter: brightness(0) invert(1);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 95vw;
+      }
+
+      .logo-item {
+        width: 42%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="topbar">
+      <img src="images/Bagian_Atas.jpg" alt="Topbar" class="topbar-img">
+    </header>
+
+<a href="berhasil.html" class="back-btn">← Kembali</a>
+
+    <section class="info-section">
+      <div class="seat-box">
+        <h5>Sisa Saldo Anda</h5>
+        <div class="seat-number">50.000</div>
+      </div>
+    </section>
+
+    <!-- KATEGORI -->
+    <section class="category-wrapper">
+      <div class="category-section" id="categorySection">
+        <button class="category-btn active" onclick="filterCategory(event, 'all')">Semua</button>
+        <button class="category-btn" onclick="filterCategory(event, 'fashion')">Fashion</button>
+        <button class="category-btn" onclick="filterCategory(event, 'makanan')">Makanan</button>
+        <button class="category-btn" onclick="filterCategory(event, 'elektronik')">Elektronik</button>
+        <button class="category-btn" onclick="filterCategory(event, 'aksesori')">Aksesori</button>
+      </div>
+    </section>
+
+    <!-- LOGO SECTION -->
+    <section class="logo-section">
+      <a href="sampel.html" class="logo-item" data-category="fashion">
+        <img src="images/logo_brand.png" alt="Brand 1">
+        <div class="logo-name">Nama Brand 1</div>
+      </a>
+
+      <a href="sampel.html" class="logo-item" data-category="makanan">
+        <img src="images/logo_brand.png" alt="Brand 2">
+        <div class="logo-name">Nama Brand 2</div>
+      </a>
+
+      <a href="sampel.html" class="logo-item" data-category="elektronik">
+        <img src="images/logo_brand.png" alt="Brand 3">
+        <div class="logo-name">Nama Brand 3</div>
+      </a>
+
+      <a href="sampel.html" class="logo-item" data-category="fashion">
+        <img src="images/logo_brand.png" alt="Brand 4">
+        <div class="logo-name">Nama Brand 4</div>
+      </a>
+
+      <a href="sampel.html" class="logo-item" data-category="makanan">
+        <img src="images/logo_brand.png" alt="Brand 5">
+        <div class="logo-name">Nama Brand 5</div>
+      </a>
+
+      <a href="sampel.html" class="logo-item" data-category="elektronik">
+        <img src="images/logo_brand.png" alt="Brand 6">
+        <div class="logo-name">Nama Brand 6</div>
+      </a>
+
+      <a href="sampel.html" class="logo-item" data-category="fashion">
+        <img src="images/logo_brand.png" alt="Brand 7">
+        <div class="logo-name">Nama Brand 7</div>
+      </a>
+
+      <a href="sampel.html" class="logo-item" data-category="aksesori">
+        <img src="images/logo_brand.png" alt="Brand 8">
+        <div class="logo-name">Nama Brand 8</div>
+      </a>
+
+      <a href="sampel.html" class="logo-item" data-category="elektronik">
+        <img src="images/logo_brand.png" alt="Brand 9">
+        <div class="logo-name">Nama Brand 9</div>
+      </a>
+
+      <a href="sampel.html" class="logo-item" data-category="aksesori">
+        <img src="images/logo_brand.png" alt="Brand 10">
+        <div class="logo-name">Nama Brand 10</div>
+      </a>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 BISA MEDIA.MCN. All Rights Reserved.</p>
+      <div class="social-links">
+        <a href="https://www.tiktok.com/@bisamedia.mcn" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok" class="icon tiktok-icon">
+        </a>
+        <a href="https://wa.me/6287847687691?text=Halo%20Admin" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="icon">
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function filterCategory(event, category) {
+      document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      document.querySelectorAll('.logo-item').forEach(item => {
+        const cat = item.getAttribute('data-category');
+        item.style.display = (category === 'all' || cat === category) ? 'flex' : 'none';
+      });
+    }
+
+    // Otomatis center kategori kalau jumlah sedikit
+    window.addEventListener('load', () => {
+      const section = document.getElementById('categorySection');
+      const wrapper = section.parentElement;
+      if (section.scrollWidth <= wrapper.clientWidth) {
+        section.style.justifyContent = 'center';
+      } else {
+        section.style.justifyContent = 'flex-start';
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      const section = document.getElementById('categorySection');
+      const wrapper = section.parentElement;
+      if (section.scrollWidth <= wrapper.clientWidth) {
+        section.style.justifyContent = 'center';
+      } else {
+        section.style.justifyContent = 'flex-start';
+      }
+    });
+  </script>
+</body>
+</html>

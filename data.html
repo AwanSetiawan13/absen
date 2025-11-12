@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BISA MEDIA.MCN</title>
+  <link rel="icon" type="image/png" href="images/Logo_Bisa.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f4f7fc;
+      display: flex;
+      justify-content: center;
+      color: #222;
+    }
+
+    .container {
+      width: 50vw;
+      background: #fff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-bottom: 50px;
+    }
+
+    .topbar-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .aduh {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .aduh img {
+      width: 100%;
+      max-width: 1080px;
+      border-radius: 14px;
+      border: 2px solid #004aad;
+    }
+
+    h2.section-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    .contact {
+      display: flex;
+      justify-content: center;
+      margin: 30px auto;
+      width: 80%;
+      max-width: 900px;
+    }
+
+    .contact-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form label {
+      font-weight: 600;
+      color: #004aad;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      background: #f4f4f4;
+      color: #555;
+    }
+
+    .contact-form input[readonly],
+    .contact-form textarea[readonly] {
+      cursor: not-allowed;
+    }
+
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid #004aad;
+    }
+
+    .contact-form button {
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      transition: 0.2s;
+    }
+
+    .contact-form button:hover {
+      background-color: #1ebe5d;
+      transform: translateY(-2px);
+    }
+
+    /* Popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      animation: fadeInUp 0.3s ease;
+    }
+
+    .popup-content h3 {
+      color: #004aad;
+      margin-bottom: 15px;
+    }
+
+    .popup-content img {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      border: 2px solid #004aad;
+      object-fit: cover;
+    }
+
+    .popup-content button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      margin: 5px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .popup-content .yes {
+      background: #25D366;
+      color: white;
+    }
+
+    .popup-content .no {
+      background: #ccc;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+        padding: 20px 10px;
+        font-size: 14px;
+      }
+
+      /* Background yang blur (pakai layer pseudo-element) */
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('images/Bagian_Bawah.jpg') center/100% auto no-repeat;
+        filter: blur(2px);
+        /* hanya background yang blur */
+        z-index: 0;
+      }
+
+      /* Pastikan teks dan ikon di atas background blur */
+      footer p,
+      footer .social-links {
+        position: relative;
+        z-index: 1;
+      }
+
+      .social-links {
+        margin-top: 10px;
+      }
+
+      .social-links a {
+        margin: 0 8px;
+        display: inline-block;
+      }
+
+      .icon {
+        width: 28px;
+        height: 28px;
+        transition: transform 0.2s ease;
+      }
+
+      .tiktok-icon {
+        filter: brightness(0) invert(1);
+        /* putihkan TikTok */
+      }
+
+      .wa-icon {
+        filter: none;
+        /* biarkan hijau alami */
+      }
+
+      .icon:hover {
+        transform: scale(1.2);
+      }
+
+    .social-links {
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+      transition: transform 0.2s ease;
+    }
+
+    .icon:hover {
+      transform: scale(1.2);
+    }
+
+    .social-links {
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+      transition: transform 0.2s ease;
+    }
+
+    .tiktok-icon {
+      filter: brightness(0) invert(1);
+    }
+
+    .icon:hover {
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: 100vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- 🔹 Topbar -->
+    <header class="topbar">
+      <img src="images/Bagian_Atas.jpg" alt="Topbar" class="topbar-img">
+    </header>
+
+    <!-- 🔹 Gambar utama -->
+    <section class="aduh">
+      <img src="images/Bagian1.jpg" alt="Sampul">
+    </section>
+
+    <!-- 🔹 Form Data -->
+    <section>
+      <h2 class="section-title">Verifikasi Absensi</h2>
+      <div class="contact">
+        <div class="contact-form">
+          <label>Nama</label>
+          <input type="text" value="Aditya Firmansyah" readonly>
+
+          <label>Foto</label>
+          <img
+            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNIFpE1JNS9Q5_PdKP4wQyJZTMYq9l6wa6gWDjfy8FePfwP_mFjyKEN_LzZrZnptouRUNvuO6YBrXReM8ynwMomVjrGV42-aPjTNqQuH5wL9dugF6E6GpyHSG-n4tp9PU6bUpplotfwXet0CECapOAyx7bas1yHE8Z-BbCynCaidwAXVqwzKRSd7I9/w640-h632/profil%20wa%20kosong.jpg"
+            alt="Foto Profil" id="fotoProfil" class="profile-photo">
+
+          <label>Email</label>
+          <input type="text" value="aditya@bisamedia.com" readonly>
+
+          <label>No. WhatsApp</label>
+          <input type="text" value="081234567890" readonly>
+
+          <label>Alamat</label>
+          <textarea rows="3" readonly>Jl. Melati No. 12, Tasikmalaya</textarea>
+
+          <label>Username TikTok</label>
+          <input type="text" value="@aditya.firmansyah" readonly>
+
+          <label>Package</label>
+          <input type="text" value="VIP" readonly>
+
+          <label>Jam</label>
+          <input type="text" id="jamSekarang" readonly>
+
+          <button type="button" id="submitBtn">Kirim</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔹 Popup -->
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <h3>Konfirmasi Absensi</h3>
+        <img id="popupFoto" src="" alt="Foto Konfirmasi">
+        <p>Apakah data ini sudah benar milik anda?</p>
+        <div>
+          <button class="yes" onclick="lanjut()">Ya, Benar</button>
+          <button class="no" onclick="tutupPopup()">Periksa Lagi</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔹 Footer -->
+    <footer>
+      <p>&copy; 2025 BISA MEDIA.MCN. All Rights Reserved.</p>
+      <div class="social-links">
+        <a href="https://www.tiktok.com/@bisamedia.mcn" target="_blank" title="Kunjungi TikTok">
+          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok" class="icon tiktok-icon">
+        </a>
+        <a href="https://wa.me/6287847687691?text=Halo%20Admin" target="_blank" title="Hubungi via WhatsApp">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="icon wa-icon">
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const popup = document.getElementById('popup');
+    const submitBtn = document.getElementById('submitBtn');
+    const fotoProfil = document.getElementById('fotoProfil');
+    const popupFoto = document.getElementById('popupFoto');
+    const jamInput = document.getElementById('jamSekarang');
+
+    // 🔹 Tampilkan jam real-time (berjalan otomatis)
+    function updateJam() {
+      const sekarang = new Date();
+      const jam = sekarang.getHours().toString().padStart(2, '0');
+      const menit = sekarang.getMinutes().toString().padStart(2, '0');
+      const detik = sekarang.getSeconds().toString().padStart(2, '0');
+      jamInput.value = `${jam}:${menit}:${detik}`;
+    }
+
+    setInterval(updateJam, 1000);
+    updateJam();
+
+    submitBtn.addEventListener('click', () => {
+      popupFoto.src = fotoProfil.src;
+      popup.style.display = 'flex';
+    });
+
+    function tutupPopup() {
+      popup.style.display = 'none';
+    }
+
+    function lanjut() {
+      window.location.href = 'berhasil.html';
+    }
+  </script>
+</body>
+
+</html>

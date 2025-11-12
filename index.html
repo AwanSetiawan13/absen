@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BISA MEDIA.MCN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Choices.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f4f7fc;
+      display: flex;
+      justify-content: center;
+      color: #222;
+    }
+
+    .container {
+      width: 50vw;
+      background: #fff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      margin: 40px 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .topbar-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    section {
+      padding: 30px;
+    }
+
+    h2.section-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: #004aad;
+      margin-bottom: 25px;
+    }
+
+    .aduh {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+
+    .aduh img {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 14px;
+      border: 2px solid #004aad;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form label {
+      font-weight: 600;
+      color: #004aad;
+    }
+
+    .contact-form select {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      width: 100%;
+    }
+
+    .contact-form button {
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      transition: 0.2s;
+    }
+
+    .contact-form button:hover {
+      background-color: #1ebe5d;
+      transform: translateY(-2px);
+    }
+
+    footer {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+        padding: 20px 10px;
+        font-size: 14px;
+      }
+
+      /* Background yang blur (pakai layer pseudo-element) */
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('images/Bagian_Bawah.jpg') center/100% auto no-repeat;
+        filter: blur(2px);
+        /* hanya background yang blur */
+        z-index: 0;
+      }
+
+      /* Pastikan teks dan ikon di atas background blur */
+      footer p,
+      footer .social-links {
+        position: relative;
+        z-index: 1;
+      }
+
+      .social-links {
+        margin-top: 10px;
+      }
+
+      .social-links a {
+        margin: 0 8px;
+        display: inline-block;
+      }
+
+      .icon {
+        width: 28px;
+        height: 28px;
+        transition: transform 0.2s ease;
+      }
+
+      .tiktok-icon {
+        filter: brightness(0) invert(1);
+        /* putihkan TikTok */
+      }
+
+      .wa-icon {
+        filter: none;
+        /* biarkan hijau alami */
+      }
+
+      .icon:hover {
+        transform: scale(1.2);
+      }
+
+    /* Popup */
+    .popup-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-card {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .popup-card h3 {
+      color: #004aad;
+      margin-bottom: 15px;
+    }
+
+    .popup-card p {
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .popup-btn button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      margin: 8px;
+    }
+
+    .popup-btn .yes {
+      background: #25D366;
+      color: white;
+    }
+
+    .popup-btn .no {
+      background: #ccc;
+      color: #333;
+    }
+
+    @media(max-width:600px) {
+      .container {
+        width: 95vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="formPage">
+    <header class="topbar">
+      <img src="images/Bagian_Atas.jpg" alt="Topbar" class="topbar-img">
+    </header>
+
+    <section class="aduh">
+      <img src="images/Bagian1.jpg" alt="Sampul">
+    </section>
+
+    <section>
+      <h2 class="section-title">Absensi</h2>
+      <div class="contact-form">
+
+        <label for="nama">Nama</label>
+        <select id="nama" name="nama">
+          <option value="">-- Pilih / Ketik Nama --</option>
+          <option value="Admin BISA MEDIA">Admin BISA MEDIA</option>
+          <option value="Marketing BISA MEDIA">Marketing BISA MEDIA</option>
+          <option value="Customer Support">Customer Support</option>
+        </select>
+
+        <label for="email">Email</label>
+        <select id="email" name="email">
+          <option value="">-- Pilih Email --</option>
+          <option value="admin@bisamedia.com">admin@bisamedia.com</option>
+          <option value="marketing@bisamedia.com">marketing@bisamedia.com</option>
+          <option value="support@bisamedia.com">support@bisamedia.com</option>
+        </select>
+
+        <button type="button" id="nextBtn">Selanjutnya</button>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 BISA MEDIA.MCN. All Rights Reserved.</p>
+      <div class="social-links">
+        <a href="https://www.tiktok.com/@bisamedia.mcn" target="_blank" title="Kunjungi TikTok">
+          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok" class="icon tiktok-icon">
+        </a>
+        <a href="https://wa.me/6287847687691?text=Halo%20Admin" target="_blank" title="Hubungi via WhatsApp">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="icon wa-icon">
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- POPUP -->
+ <div class="popup-bg" id="popup">
+  <div class="popup-card">
+    <h3>Konfirmasi Kehadiran</h3>
+    <p><strong>Nama:</strong> <span id="popupNama"></span></p>
+    <p><strong>Email:</strong> <span id="popupEmail"></span></p>
+    <p>Pastikan data di atas punya anda.<br> Apakah Anda ingin melanjutkan proses absensi?</p>
+    <div class="popup-btn">
+      <button class="yes" id="confirmYes">Ya, Lanjutkan</button>
+      <button class="no" id="confirmNo">Batalkan</button>
+    </div>
+  </div>
+</div>
+
+
+  <script>
+    // Buat dropdown NAMA bisa diketik
+    const namaSelect = document.getElementById('nama');
+    const namaChoices = new Choices(namaSelect, {
+      searchEnabled: true,
+      addItems: true, // bisa isi manual
+      duplicateItemsAllowed: false,
+      itemSelectText: '',
+      noResultsText: 'Nama tidak ditemukan',
+      shouldSort: false
+    });
+
+    // Buat dropdown EMAIL dengan search
+    const emailSelect = document.getElementById('email');
+    const emailChoices = new Choices(emailSelect, {
+      searchEnabled: true,
+      itemSelectText: '',
+      noResultsText: 'Email tidak ditemukan',
+      shouldSort: false
+    });
+
+    const nextBtn = document.getElementById("nextBtn");
+    const popup = document.getElementById("popup");
+    const confirmNo = document.getElementById("confirmNo");
+    const confirmYes = document.getElementById("confirmYes");
+    const popupNama = document.getElementById("popupNama");
+    const popupEmail = document.getElementById("popupEmail");
+
+    nextBtn.addEventListener("click", () => {
+      const namaValue = namaChoices.getValue(true);
+      const emailValue = emailChoices.getValue(true);
+
+      if (namaValue === "" || emailValue === "") {
+        alert("Silakan isi nama dan pilih email terlebih dahulu!");
+      } else {
+        popupNama.textContent = namaValue;
+        popupEmail.textContent = emailValue;
+        popup.style.display = "flex";
+      }
+    });
+
+    confirmNo.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
+
+    confirmYes.addEventListener("click", () => {
+      popup.style.display = "none";
+      window.location.href = "data.html";
+    });
+  </script>
+</body>
+</html>
