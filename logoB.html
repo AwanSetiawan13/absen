@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,7 +104,8 @@
       display: inline-flex;
       gap: 10px;
       padding: 0 15px;
-      justify-content: center; /* default: center kalau muat */
+      justify-content: center;
+      /* default: center kalau muat */
       width: max-content;
       min-width: 100%;
       transition: all 0.3s ease;
@@ -175,7 +177,7 @@
       text-align: center;
     }
 
-    /* FOOTER */  
+    /* FOOTER */
     footer {
       position: relative;
       overflow: hidden;
@@ -183,9 +185,11 @@
       text-align: center;
       padding: 20px 10px;
       font-size: 14px;
+      min-height: 120px;
+      /* stabilkan tinggi footer */
     }
 
-    /* Background yang blur (pakai layer pseudo-element) */
+    /* Background blur stabil */
     footer::before {
       content: "";
       position: absolute;
@@ -193,13 +197,14 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('images/Bagian_Bawah.jpg') center/100% auto no-repeat;
+      background: url('images/Bagian_Bawah.jpg') center/cover no-repeat;
       filter: blur(2px);
-      /* hanya background yang blur */
+      transform: scale(1.05);
+      /* biar blur tidak terpotong */
       z-index: 0;
     }
 
-    /* Pastikan teks dan ikon di atas background blur */
+    /* Pastikan konten di atas */
     footer p,
     footer .social-links {
       position: relative;
@@ -223,39 +228,14 @@
 
     .tiktok-icon {
       filter: brightness(0) invert(1);
-      /* putihkan TikTok */
     }
 
     .wa-icon {
       filter: none;
-      /* biarkan hijau alami */
     }
 
     .icon:hover {
       transform: scale(1.2);
-    }
-
-    .social-links {
-      margin-top: 10px;
-    }
-
-    .social-links a {
-      margin: 0 8px;
-      display: inline-block;
-    }
-
-    .icon {
-      width: 28px;
-      height: 28px;
-      transition: transform 0.2s ease;
-    }
-
-    .icon:hover {
-      transform: scale(1.2);
-    }
-
-    .tiktok-icon {
-      filter: brightness(0) invert(1);
     }
 
     @media (max-width: 768px) {
@@ -276,7 +256,7 @@
       <img src="images/Bagian_Atas.jpg" alt="Topbar" class="topbar-img">
     </header>
 
-<a href="berhasil.html" class="back-btn">← Kembali</a>
+    <a href="berhasil.html" class="back-btn">← Kembali</a>
 
     <section class="info-section">
       <div class="seat-box">
@@ -394,4 +374,5 @@
     });
   </script>
 </body>
+
 </html>

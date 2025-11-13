@@ -147,69 +147,70 @@
     }
 
     /* BOX UTAMA */
-.data-box {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  flex: 1;
-  min-width: 300px;
-}
+    .data-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      min-width: 300px;
+    }
 
-.data-box h4 {
-  margin-bottom: 15px;
-  font-weight: 600;
-  text-align: center;
-  color: #004aad;
-}
+    .data-box h4 {
+      margin-bottom: 15px;
+      font-weight: 600;
+      text-align: center;
+      color: #004aad;
+    }
 
-/* FOTO DI KIRI — DATA DI KANAN */
-.profile-container {
-  display: flex;
-  align-items: flex-start; /* sejajarkan atas */
-  gap: 25px;
-}
+    /* FOTO DI KIRI — DATA DI KANAN */
+    .profile-container {
+      display: flex;
+      align-items: flex-start;
+      /* sejajarkan atas */
+      gap: 25px;
+    }
 
-.profile-photo img {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #004aad;
-}
+    .profile-photo img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #004aad;
+    }
 
-/* BAGIAN TEKS (KANAN) */
-.profile-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-}
+    /* BAGIAN TEKS (KANAN) */
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
 
-.profile-info label {
-  font-size: 13px;
-  color: #333;
-  margin-top: 6px;
-  font-weight: 500;
-  text-align: left;
-}
+    .profile-info label {
+      font-size: 13px;
+      color: #333;
+      margin-top: 6px;
+      font-weight: 500;
+      text-align: left;
+    }
 
-.profile-info input {
-  border: none;
-  background: #f7f7f7;
-  border-radius: 6px;
-  padding: 6px 8px;
-  font-size: 13px;
-  color: #004aad;
-  font-weight: 600;
-  text-align: left;
-  width: 100%;
-  box-sizing: border-box;
-}
+    .profile-info input {
+      border: none;
+      background: #f7f7f7;
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 13px;
+      color: #004aad;
+      font-weight: 600;
+      text-align: left;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-  .seat-box {
-    text-align: center;
-  }
+    .seat-box {
+      text-align: center;
+    }
 
     /* KOTAK NOMOR KURSI */
     .seat-box {
@@ -239,7 +240,7 @@
       display: inline-block;
     }
 
-    /* garis-hitam */ 
+    /* garis-hitam */
     .garis-hitam {
       border: 3px solid #000;
       width: 90%;
@@ -348,9 +349,11 @@
       text-align: center;
       padding: 20px 10px;
       font-size: 14px;
+      min-height: 120px;
+      /* stabilkan tinggi footer */
     }
 
-    /* Background yang blur (pakai layer pseudo-element) */
+    /* Background blur stabil */
     footer::before {
       content: "";
       position: absolute;
@@ -358,13 +361,14 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('images/Bagian_Bawah.jpg') center/100% auto no-repeat;
+      background: url('images/Bagian_Bawah.jpg') center/cover no-repeat;
       filter: blur(2px);
-      /* hanya background yang blur */
+      transform: scale(1.05);
+      /* biar blur tidak terpotong */
       z-index: 0;
     }
 
-    /* Pastikan teks dan ikon di atas background blur */
+    /* Pastikan konten di atas */
     footer p,
     footer .social-links {
       position: relative;
@@ -388,63 +392,41 @@
 
     .tiktok-icon {
       filter: brightness(0) invert(1);
-      /* putihkan TikTok */
     }
 
     .wa-icon {
       filter: none;
-      /* biarkan hijau alami */
     }
 
     .icon:hover {
       transform: scale(1.2);
     }
 
-    .social-links {
-      margin-top: 10px;
+    @media (max-width: 768px) {
+      .container {
+        width: 95vw;
+      }
+
+      .info-section {
+        flex-direction: column;
+        align-items: stretch;
+        /* biar elemen isi melebar sama */
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .data-box,
+      .seat-box {
+        width: 100%;
+        /* biar sejajar dan penuh */
+        box-sizing: border-box;
+      }
+
+      .data-box {
+        text-align: center;
+        /* judul tetap di tengah */
+      }
     }
-
-    .social-links a {
-      margin: 0 8px;
-      display: inline-block;
-    }
-
-    .icon {
-      width: 28px;
-      height: 28px;
-      transition: transform 0.2s ease;
-    }
-
-    .icon:hover {
-      transform: scale(1.2);
-    }
-
-    .tiktok-icon {
-      filter: brightness(0) invert(1);
-    }
-
-   @media (max-width: 768px) {
-  .container {
-    width: 95vw;
-  }
-
-  .info-section {
-    flex-direction: column;
-    align-items: stretch; /* biar elemen isi melebar sama */
-    gap: 20px;
-    padding: 20px;
-  }
-
-  .data-box,
-  .seat-box {
-    width: 100%; /* biar sejajar dan penuh */
-    box-sizing: border-box;
-  }
-
-  .data-box {
-    text-align: center; /* judul tetap di tengah */
-  }
-}
   </style>
 </head>
 
@@ -509,7 +491,7 @@
     </section>
 
     <!-- "garis-hitam" Batas aktif dan tidak aktif -->
-    <hr class="garis-hitam"> 
+    <hr class="garis-hitam">
     <h5 style="text-align: center;">Aktif ketika udah diaktifkan oleh operator</h5>
 
     <div class="cta-box" onclick="window.location.href='logoB.html'">
@@ -521,7 +503,7 @@
       <!-- Nomor Kursi -->
       <div class="seat-box"
         style="width: 100%; background-color: #004aad; color: white; padding: 20px; border-radius: 12px; text-align: center;">
-        <h5 style="margin: 0; font-size: 1.2rem;">Sisa Saldo Anda</h5>
+        <h5 style="margin: 0; font-size: 1.2rem;"> Saldo Anda</h5>
         <div class="seat-number" style="font-size: 2rem; font-weight: bold; margin-top: 10px;">50.000</div>
       </div>
     </section>

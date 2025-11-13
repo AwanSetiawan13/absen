@@ -189,81 +189,36 @@
     }
 
     footer {
-        position: relative;
-        overflow: hidden;
-        color: #fff;
-        text-align: center;
-        padding: 20px 10px;
-        font-size: 14px;
-      }
-
-      /* Background yang blur (pakai layer pseudo-element) */
-      footer::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('images/Bagian_Bawah.jpg') center/100% auto no-repeat;
-        filter: blur(2px);
-        /* hanya background yang blur */
-        z-index: 0;
-      }
-
-      /* Pastikan teks dan ikon di atas background blur */
-      footer p,
-      footer .social-links {
-        position: relative;
-        z-index: 1;
-      }
-
-      .social-links {
-        margin-top: 10px;
-      }
-
-      .social-links a {
-        margin: 0 8px;
-        display: inline-block;
-      }
-
-      .icon {
-        width: 28px;
-        height: 28px;
-        transition: transform 0.2s ease;
-      }
-
-      .tiktok-icon {
-        filter: brightness(0) invert(1);
-        /* putihkan TikTok */
-      }
-
-      .wa-icon {
-        filter: none;
-        /* biarkan hijau alami */
-      }
-
-      .icon:hover {
-        transform: scale(1.2);
-      }
-
-    .social-links {
-      margin-top: 10px;
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+      min-height: 120px;
+      /* stabilkan tinggi footer */
     }
 
-    .social-links a {
-      margin: 0 8px;
-      display: inline-block;
+    /* Background blur stabil */
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('images/Bagian_Bawah.jpg') center/cover no-repeat;
+      filter: blur(2px);
+      transform: scale(1.05);
+      /* biar blur tidak terpotong */
+      z-index: 0;
     }
 
-    .icon {
-      width: 28px;
-      height: 28px;
-      transition: transform 0.2s ease;
-    }
-
-    .icon:hover {
-      transform: scale(1.2);
+    /* Pastikan konten di atas */
+    footer p,
+    footer .social-links {
+      position: relative;
+      z-index: 1;
     }
 
     .social-links {
@@ -283,6 +238,10 @@
 
     .tiktok-icon {
       filter: brightness(0) invert(1);
+    }
+
+    .wa-icon {
+      filter: none;
     }
 
     .icon:hover {
