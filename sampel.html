@@ -428,16 +428,31 @@
       </div>
     </section>
 
-    <!-- POPUP -->
-    <div id="popupConfirm">
-      <div class="popup-content">
-        <p id="popupText"></p>
-        <div style="display:flex; justify-content:center; gap:15px;">
-          <button id="btnYes">Ya</button>
-          <button id="btnNo">Tidak</button>
-        </div>
+   <!-- POPUP -->
+<div id="popupConfirm">
+  <div class="popup-content" id="popupContent">
+    <h3 id="popupTitle" style="color:#004aad; margin-bottom:10px; text-align:center;">Konfirmasi Pengambilan</h3>
+    <p id="popupText" style="color:#333; margin-bottom:20px; text-align:center;"></p>
+    <div id="popupButtons" style="display:flex; justify-content:center; gap:15px;">
+      <button id="btnYes">Ya</button>
+      <button id="btnNo">Tidak</button>
+    </div>
+
+    <!-- Bagian hasil sukses -->
+    <div id="popupResult" style="display:none; text-align:left; color:#333;">
+      <h3 style="text-align:center; color:#004aad; margin-bottom:10px;">Selamat!</h3>
+      <p style="text-align:center;">Anda berhasil mengambil sampel <strong id="resultNama"></strong></p>
+      <hr style="margin:10px 0;">
+      <p><strong>Saldo Anda:</strong> <span id="resultSaldoAwal"></span></p>
+      <p><strong id="resultNama2Label"></strong>: <span id="resultHarga"></span></p>
+      <hr style="margin:10px 0;">
+      <p><strong>Sisa Saldo Anda:</strong> <span id="resultSisaSaldo"></span></p>
+      <div style="text-align:center; margin-top:15px;">
+        <button id="btnClose" style="background:#004aad; color:white; padding:8px 16px; border:none; border-radius:8px; cursor:pointer;">Tutup</button>
       </div>
     </div>
+  </div>
+</div>
 
     <footer>
       <p>&copy; 2025 BISA MEDIA.MCN. All Rights Reserved.</p>
@@ -452,39 +467,71 @@
     </footer>
   </div>
 
-  <script>
-    let saldo = 50000;
-    const saldoElement = document.querySelector('.saldo-value');
-    const popup = document.getElementById('popupConfirm');
-    const popupText = document.getElementById('popupText');
-    const btnYes = document.getElementById('btnYes');
-    const btnNo = document.getElementById('btnNo');
+ <script>
+  let saldo = 50000;
+  const saldoElement = document.querySelector('.saldo-value');
+  const popup = document.getElementById('popupConfirm');
+  const popupTitle = document.getElementById('popupTitle');
+  const popupText = document.getElementById('popupText');
+  const popupButtons = document.getElementById('popupButtons');
+  const popupResult = document.getElementById('popupResult');
+  const resultNama = document.getElementById('resultNama');
+  const resultNama2Label = document.getElementById('resultNama2Label');
+  const resultHarga = document.getElementById('resultHarga');
+  const resultSaldoAwal = document.getElementById('resultSaldoAwal');
+  const resultSisaSaldo = document.getElementById('resultSisaSaldo');
+  const btnYes = document.getElementById('btnYes');
+  const btnNo = document.getElementById('btnNo');
+  const btnClose = document.getElementById('btnClose');
 
-    document.querySelectorAll('.logo-item').forEach(item => {
-      item.addEventListener('click', function () {
-        const nama = this.querySelector('.logo-name').textContent;
-        const hargaText = this.querySelector('.logo-price').textContent.replace(/[^\d]/g, '');
-        const harga = parseInt(hargaText);
-        popup.style.display = 'flex';
-        popupText.textContent = `Apakah anda ingin mengambil sampel ${nama} dengan harga Rp ${harga.toLocaleString()} ?`;
+  document.querySelectorAll('.logo-item').forEach(item => {
+    item.addEventListener('click', function () {
+      const nama = this.querySelector('.logo-name').textContent;
+      const hargaText = this.querySelector('.logo-price').textContent.replace(/[^\d]/g, '');
+      const harga = parseInt(hargaText);
 
-        btnYes.onclick = () => {
-          if (saldo >= harga) {
-            saldo -= harga;
-            saldoElement.textContent = `Rp ${saldo.toLocaleString()}`;
-            alert(`Berhasil mengambil ${nama}. Saldo Anda sekarang Rp ${saldo.toLocaleString()}.`);
-          } else {
-            alert('Saldo anda tidak cukup!');
-          }
+      popup.style.display = 'flex';
+      popupTitle.textContent = "Konfirmasi Pengambilan";
+      popupText.textContent = `Apakah anda ingin mengambil sampel ${nama} dengan harga Rp ${harga.toLocaleString()} ?`;
+      popupButtons.style.display = "flex";
+      popupResult.style.display = "none";
+
+      btnYes.onclick = () => {
+        if (saldo >= harga) {
+          const saldoAwal = saldo;
+          saldo -= harga;
+
+          // tampilkan hasil popup sukses
+          popupTitle.textContent = "";
+          popupText.textContent = "";
+          popupButtons.style.display = "none";
+          popupResult.style.display = "block";
+
+          resultNama.textContent = nama;
+          resultNama2Label.textContent = nama;
+          resultHarga.textContent = `Rp ${harga.toLocaleString()}`;
+          resultSaldoAwal.textContent = `Rp ${saldoAwal.toLocaleString()}`;
+          resultSisaSaldo.textContent = `Rp ${saldo.toLocaleString()}`;
+
+          saldoElement.textContent = `Rp ${saldo.toLocaleString()}`;
+        } else {
+          alert('Saldo anda tidak cukup!');
           popup.style.display = 'none';
-        };
+        }
+      };
 
-        btnNo.onclick = () => {
-          popup.style.display = 'none';
-        };
-      });
+      btnNo.onclick = () => {
+        popup.style.display = 'none';
+      };
+
+      btnClose.onclick = () => {
+        popup.style.display = 'none';
+      };
     });
-  </script>
+  });
+</script>
+
+
 </body>
 
 </html>
