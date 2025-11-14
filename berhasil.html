@@ -240,6 +240,126 @@
       display: inline-block;
     }
 
+    /* WRAPPER KIRI–KANAN */
+    .info-wrapper {
+      display: flex;
+      gap: 25px;
+      align-items: stretch;
+      /* penting untuk menyamakan tinggi */
+    }
+
+    /* KIRI DAN KANAN SAMA BESAR */
+    .data-box,
+    .right-box {
+      flex: 1;
+      /* otomatis sama besar */
+    }
+
+    /* KOTAK DATA DIRI */
+    .data-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      min-width: 300px;
+    }
+
+    .data-box h4 {
+      text-align: center;
+      color: #004aad;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    /* FOTO + INFO */
+    .profile-container {
+      display: flex;
+      gap: 25px;
+    }
+
+    .profile-photo img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #004aad;
+    }
+
+    .profile-info label {
+      font-size: 13px;
+      color: #333;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    .profile-info input {
+      background: #f5f5f5;
+      border: none;
+      padding: 6px 8px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #004aad;
+      width: 100%;
+    }
+
+    /* KANAN: KURSI + SALDO */
+    .right-box {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* BOX KURS / SALDO */
+    .seat-box,
+    .saldo-box {
+      background: #004aad;
+      padding: 25px 10px;
+      border-radius: 12px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .seat-number,
+    .saldo-amount {
+      background: #fff;
+      color: #004aad;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 22px;
+      display: inline-block;
+    }
+
+    /* 📱 RESPONSIVE MOBILE */
+    @media (max-width: 768px) {
+      .info-wrapper {
+        flex-direction: column;
+      }
+
+      .right-box {
+        width: 100%;
+      }
+
+      .data-box,
+      .right-box {
+        width: 100%;
+      }
+
+      .seat-box,
+      .saldo-box {
+        padding: 20px;
+      }
+
+      .seat-number,
+      .saldo-amount {
+        font-size: 20px;
+        padding: 8px 15px;
+      }
+    }
+
+
     /* garis-hitam */
     .garis-hitam {
       border: 3px solid #000;
@@ -270,8 +390,8 @@
     .visi,
     .misi {
       /* border: 2px solid #004aad; */
-      border-radius: 10px;
-      padding: 15px;
+      border-radius: 0px;
+      padding: 40px;
       background: #fff;
     }
 
@@ -444,38 +564,52 @@
       Terima kasih, absensi Anda telah berhasil diproses.
     </div>
 
-    <!-- BAGIAN DATA DIRI + NO KURSI -->
     <section class="info-section">
-      <!-- Data Diri -->
-      <div class="data-box">
-        <h4>Data Diri</h4>
-        <div class="profile-container">
-          <div class="profile-photo">
-            <img
-              src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNIFpE1JNS9Q5_PdKP4wQyJZTMYq9l6wa6gWDjfy8FePfwP_mFjyKEN_LzZrZnptouRUNvuO6YBrXReM8ynwMomVjrGV42-aPjTNqQuH5wL9dugF6E6GpyHSG-n4tp9PU6bUpplotfwXet0CECapOAyx7bas1yHE8Z-BbCynCaidwAXVqwzKRSd7I9/w640-h632/profil%20wa%20kosong.jpg"
-              alt="Foto Profil">
-          </div>
-          <div class="profile-info">
-            <label>Nama:</label>
-            <input type="text" value="Aditya Firmansyah" readonly>
 
-            <label>Email:</label>
-            <input type="text" value="aditya@gmai.com" readonly>
+      <div class="info-wrapper">
 
-            <label>Waktu kedatangan</label>
-            <input type="text" value="07.30.59" readonly>
+        <!-- KIRI: DATA DIRI -->
+        <div class="data-box">
+          <h4>Data Diri</h4>
+          <div class="profile-container">
+            <div class="profile-photo">
+              <img
+                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNIFpE1JNS9Q5_PdKP4wQyJZTMYq9l6wa6gWDjfy8FePfwP_mFjyKEN_LzZrZnptouRUNvuO6YBrXReM8ynwMomVjrGV42-aPjTNqQuH5wL9dugF6E6GpyHSG-n4tp9PU6bUpplotfwXet0CECapOAyx7bas1yHE8Z-BbCynCaidwAXVqwzKRSd7I9/w640-h632/profil%20wa%20kosong.jpg"
+                alt="Foto Profil">
+            </div>
+            <div class="profile-info">
+              <label>Nama:</label>
+              <input type="text" value="Aditya Firmansyah" readonly>
 
-            <label>Package:</label>
-            <input type="text" value="VIP" readonly>
+              <label>Email:</label>
+              <input type="text" value="aditya@gmail.com" readonly>
+
+              <label>Waktu Kedatangan:</label>
+              <input type="text" value="07.30.59" readonly>
+
+              <label>Package:</label>
+              <input type="text" value="VIP" readonly>
+            </div>
           </div>
         </div>
+
+        <!-- KANAN: KURSI + SALDO -->
+        <div class="right-box">
+
+          <div class="seat-box">
+            <h5>No. Kursi Anda</h5>
+            <div class="seat-number">VIP-12</div>
+          </div>
+
+          <div class="saldo-box">
+            <h3>Saldo Anda</h3>
+            <div class="saldo-amount">Rp 50.000</div>
+          </div>
+
+        </div>
+
       </div>
 
-      <!-- Nomor Kursi -->
-      <div class="seat-box">
-        <h5>No. Kursi Anda</h5>
-        <div class="seat-number">VIP-12</div>
-      </div>
     </section>
 
     <section class="section-images">
@@ -490,6 +624,30 @@
       </div>
     </section>
 
+     <section>
+        <div class="visi-container"
+          style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; margin-top: 0–5px;">
+          <div class="misi" style="flex: 1; min-width: 300px;">
+            <h4 style="color: #004aad; font-size: 1rem; margin-bottom: 10px;">Benefit Peserta
+            </h4>
+            <ol style="font-size: 0.9rem; line-height: 1.4; padding-left: 20px;">
+              <li>Akses ke semua sesi seminar & talkshow</li>
+              <li>Kesempatan networking bareng brand</li>
+              <li>Sertifikat resmi dari Bisa Media MCN</li>
+              <li>Snack & lunch gratis selama acara</li>
+              <li>Goodie bag eksklusif</li>
+              <li>Produk sampel senilai Rp150.000–Rp750.000</li>
+              <li>Akses ke komunitas TikTok Bisa Media</li>
+              <li>Komisi 8 - 12% dari produk sponsor event</li>
+              <li>Service Excellent</li>
+              <li>Merchandise</li>
+              <li>Kesempatan kolaborasi dengan brand</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+
     <!-- "garis-hitam" Batas aktif dan tidak aktif -->
     <hr class="garis-hitam">
     <h5 style="text-align: center;">Aktif ketika udah diaktifkan oleh operator</h5>
@@ -499,14 +657,13 @@
     </div>
 
 
-    <section class="info-section" style="width: 100%; padding: 20px 40px; box-sizing: border-box;">
-      <!-- Nomor Kursi -->
+    <!-- <section class="info-section" style="width: 100%; padding: 20px 40px; box-sizing: border-box;">
       <div class="seat-box"
         style="width: 100%; background-color: #004aad; color: white; padding: 20px; border-radius: 12px; text-align: center;">
         <h5 style="margin: 0; font-size: 1.2rem;"> Saldo Anda</h5>
         <div class="seat-number" style="font-size: 2rem; font-weight: bold; margin-top: 10px;">Rp 50.000</div>
       </div>
-    </section>
+    </section> -->
 
     <section style="">
       <div class="visi-container"

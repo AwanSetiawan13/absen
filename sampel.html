@@ -58,6 +58,17 @@
       display: block;
     }
 
+    .logo-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 40px 0;
+      /* border-bottom: 3px solid #004aad; */
+    }
+
+    /* BOX UTAMA */
     .cta-box {
       display: flex;
       justify-content: space-between;
@@ -66,77 +77,106 @@
       color: #fff;
       border-radius: 15px;
       padding: 25px 30px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       width: 85%;
       margin: 25px auto;
-      transition: transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s ease;
     }
 
-    /* Bagian kiri: logo + info brand */
+    .cta-box:hover {
+      transform: scale(1.02);
+    }
+
+    /* LOGO + TEXT */
     .cta-left {
       display: flex;
       align-items: center;
       gap: 20px;
-      /* jarak antara logo dan teks */
     }
 
     .brand-logo {
       width: 90px;
       height: 90px;
+      border-radius: 12px;
       object-fit: cover;
-      border-radius: 10px;
       border: 2px solid #fff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     }
 
     .brand-info h3 {
-      margin-bottom: 8px;
-      /* jarak nama brand ke kategori */
+      margin-bottom: 6px;
       font-size: 1.3rem;
+      font-weight: 600;
     }
 
     .brand-info p {
       font-size: 1rem;
+      opacity: 0.9;
     }
 
-    /* Bagian saldo di kanan */
+    /* SALDO KANAN */
     .saldo-box {
       text-align: right;
       border: 2px solid #fff;
       border-radius: 10px;
-      padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.1);
+      padding: 12px 22px;
+      min-width: 140px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(2px);
     }
 
     .saldo-box h4 {
-      color: #fff;
-      margin-bottom: 5px;
       font-size: 1.1rem;
+      margin-bottom: 5px;
+      font-weight: 500;
     }
 
-    .saldo-box .saldo-value {
-      font-weight: 600;
-      font-size: 1.2rem;
-      color: #fff;
+    .saldo-value {
+      font-size: 1.3rem;
+      font-weight: 700;
     }
 
-    /* RESPONSIVE */
+    /* RESPONSIVE MOBILE */
     @media (max-width: 768px) {
       .cta-box {
         flex-direction: column;
         text-align: center;
-        gap: 15px;
+        gap: 18px;
+        padding: 20px;
+        width: 95%;
       }
 
       .cta-left {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
+      }
+
+      .brand-logo {
+        width: 95px;
+        height: 95px;
       }
 
       .saldo-box {
-        text-align: center;
         width: 100%;
+        text-align: center;
       }
     }
+
+    /* RESPONSIVE HP KECIL */
+    @media (max-width: 480px) {
+      .brand-info h3 {
+        font-size: 1.15rem;
+      }
+
+      .brand-info p {
+        font-size: 0.9rem;
+      }
+
+      .saldo-value {
+        font-size: 1.2rem;
+      }
+    }
+
 
 
     /* LOGO SECTION */
@@ -358,10 +398,14 @@
 
     <div class="cta-box">
       <div class="cta-left">
-        <img src="images/logo_brand.png" alt="Foto Profil" class="brand-logo">
+        <img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNIFpE1JNS9Q5_PdKP4wQyJZTMYq9l6wa6gWDjfy8FePfwP_mFjyKEN_LzZrZnptouRUNvuO6YBrXReM8ynwMomVjrGV42-aPjTNqQuH5wL9dugF6E6GpyHSG-n4tp9PU6bUpplotfwXet0CECapOAyx7bas1yHE8Z-BbCynCaidwAXVqwzKRSd7I9/w640-h632/profil%20wa%20kosong.jpg"
+          alt="Foto Profil" class="brand-logo">
+
         <div class="brand-info">
-          <h3>Nama Brand</h3>
-          <p>Kategori</p>
+          <h3>Nama</h3>
+          <p>email</p>
+          <p>Package</p>
         </div>
       </div>
 
@@ -370,6 +414,35 @@
         <p class="saldo-value">Rp 50.000</p>
       </div>
     </div>
+
+    <section>
+  <div class="visi-container"
+    style="display:flex; justify-content:center; width:100%; margin-top:10px;">
+    
+    <div style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      width:85%;
+      border:2px solid #004aad;
+      padding:15px 20px;
+      border-radius:10px;
+    ">
+      
+      <!-- Nama Brand kiri -->
+      <h4 style="color:#004aad; font-size:1rem; margin:0;">
+        Nama Brand
+      </h4>
+
+      <!-- Kategori kanan -->
+      <h4 style="color:#004aad; font-size:1rem; margin:0; text-align:right;">
+        Kategori
+      </h4>
+
+    </div>
+
+  </div>
+</section>
 
 
     <!-- LOGO SECTION -->

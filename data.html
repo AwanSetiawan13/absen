@@ -306,16 +306,21 @@
 
     <!-- 🔹 Popup -->
     <div class="popup" id="popup">
-      <div class="popup-content">
-        <h3>Konfirmasi Absensi</h3>
-        <img id="popupFoto" src="" alt="Foto Konfirmasi">
-        <p>Apakah data ini sudah benar milik anda?</p>
-        <div>
-          <button class="yes" onclick="lanjut()">Ya, Benar</button>
-          <button class="no" onclick="tutupPopup()">Periksa Lagi</button>
-        </div>
-      </div>
+  <div class="popup-content">
+    <h3>Konfirmasi Absensi</h3>
+
+    <img id="popupFoto" src="" alt="Foto Konfirmasi">
+
+    <!-- Nama muncul otomatis -->
+    <p id="popupNama" style="margin:10px 0; font-weight:600; color:#004aad;"></p>
+
+    <div>
+      <button class="yes" onclick="lanjut()">Ya, Benar</button>
+      <button class="no" onclick="tutupPopup()">Periksa Lagi</button>
     </div>
+  </div>
+</div>
+
 
     <!-- 🔹 Footer -->
     <footer>
@@ -338,6 +343,10 @@
     const popupFoto = document.getElementById('popupFoto');
     const jamInput = document.getElementById('jamSekarang');
 
+    // Ambil nama dari input pertama (Nama)
+    const namaUser = document.querySelector('input[value="Aditya Firmansyah"]');
+    const popupNama = document.getElementById('popupNama');
+
     // 🔹 Tampilkan jam real-time (berjalan otomatis)
     function updateJam() {
       const sekarang = new Date();
@@ -352,6 +361,10 @@
 
     submitBtn.addEventListener('click', () => {
       popupFoto.src = fotoProfil.src;
+
+      // 🔹 Tambahkan nama ke popup
+      popupNama.textContent = `Halo ${namaUser.value}, Apakah data ini sudah benar milik anda?`;
+
       popup.style.display = 'flex';
     });
 
@@ -362,7 +375,8 @@
     function lanjut() {
       window.location.href = 'berhasil.html';
     }
-  </script>
+</script>
+
 </body>
 
 </html>
