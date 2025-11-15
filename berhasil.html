@@ -391,7 +391,7 @@
     .misi {
       /* border: 2px solid #004aad; */
       border-radius: 0px;
-      padding: 40px;
+      padding: 50px;
       background: #fff;
     }
 
@@ -547,6 +547,67 @@
         /* judul tetap di tengah */
       }
     }
+
+    .profile-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.profile-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;
+}
+
+.package-label {
+  font-weight: 600;
+  color: #004aad;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+/* Kotak package */
+.package-box {
+  width: 120px;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  font-size: 15px;
+}
+
+/* Varian warna */
+.package-mahasiswa {
+  background: linear-gradient(135deg, #7d5fff, #a29bfe);
+}
+
+.package-regular {
+  background: linear-gradient(135deg, #00b894, #55efc4);
+}
+
+.package-vip {
+  background: linear-gradient(135deg, #e1b12c, #f7d87c);
+  color: #222;
+}
+
+.package-vvip {
+  background: linear-gradient(135deg, #d63031, #ff7675);
+}
+
+/* Foto */
+.profile-photo img {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  border: 2px solid #004aad;
+  object-fit: cover;
+}
+
   </style>
 </head>
 
@@ -570,35 +631,50 @@
 
         <!-- KIRI: DATA DIRI -->
         <div class="data-box">
-          <h4>Data Diri</h4>
-          <div class="profile-container">
-            <div class="profile-photo">
-              <img
-                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNIFpE1JNS9Q5_PdKP4wQyJZTMYq9l6wa6gWDjfy8FePfwP_mFjyKEN_LzZrZnptouRUNvuO6YBrXReM8ynwMomVjrGV42-aPjTNqQuH5wL9dugF6E6GpyHSG-n4tp9PU6bUpplotfwXet0CECapOAyx7bas1yHE8Z-BbCynCaidwAXVqwzKRSd7I9/w640-h632/profil%20wa%20kosong.jpg"
-                alt="Foto Profil">
-            </div>
-            <div class="profile-info">
-              <label>Nama:</label>
-              <input type="text" value="Aditya Firmansyah" readonly>
+  <h4>Data Diri</h4>
 
-              <label>Email:</label>
-              <input type="text" value="aditya@gmail.com" readonly>
+  <div class="profile-container">
 
-              <label>Waktu Kedatangan:</label>
-              <input type="text" value="07.30.59" readonly>
+    <!-- 🔹 KIRI (Package + Foto) -->
+    <div class="profile-left">
 
-              <label>Package:</label>
-              <input type="text" value="VIP" readonly>
-            </div>
-          </div>
-        </div>
+      <!-- Label package sejajar dengan label Nama -->
+      <label class="package-label">Package:</label>
+
+      <!-- PILIH classnya untuk: mahasiswa / regular / vip / vvip -->
+      <div class="package-box package-vip">VIP</div>
+
+      <div class="profile-photo">
+        <img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNIFpE1JNS9Q5_PdKP4wQyJZTMYq9l6wa6gWDjfy8FePfwP_mFjyKEN_LzZrZnptouRUNvuO6YBrXReM8ynwMomVjrGV42-aPjTNqQuH5wL9dugF6E6GpyHSG-n4tp9PU6bUpplotfwXet0CECapOAyx7bas1yHE8Z-BbCynCaidwAXVqwzKRSd7I9/w640-h632/profil%20wa%20kosong.jpg"
+          alt="Foto Profil"
+        >
+      </div>
+
+    </div>
+
+    <!-- 🔹 KANAN (Nama, Email, Waktu) -->
+    <div class="profile-info">
+      <label>Nama:</label>
+      <input type="text" value="Aditya Firmansyah" readonly>
+
+      <label>Email:</label>
+      <input type="text" value="aditya@gmail.com" readonly>
+
+      <label>Waktu Kedatangan:</label>
+      <input type="text" value="07.30.59" readonly>
+    </div>
+
+  </div>
+</div>
+
 
         <!-- KANAN: KURSI + SALDO -->
         <div class="right-box">
 
           <div class="seat-box">
             <h5>No. Kursi Anda</h5>
-            <div class="seat-number">VIP-12</div>
+            <div class="seat-number">VIP-100</div>
           </div>
 
           <div class="saldo-box">

@@ -253,6 +253,88 @@
         width: 100vw;
       }
     }
+
+    .foto-package-wrapper {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    /* Foto tetap */
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      border: 2px solid #004aad;
+      object-fit: cover;
+    }
+
+    /* BOX PACKAGE */
+    .package-box {
+      width: 120px;
+      height: 120px;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: relative;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Tambahkan icon kecil */
+    .package-box::before {
+      content: "⭐";
+      font-size: 22px;
+      position: absolute;
+      top: 8px;
+      right: 10px;
+    }
+
+    .foto-package-wrapper-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .label-small {
+      font-weight: 600;
+      color: #004aad;
+      margin-bottom: 6px;
+    }
+
+
+    /* 4 tema package */
+    .package-mahasiswa {
+      background: linear-gradient(135deg, #7c5cfc, #9d7bff);
+    }
+
+    .package-regular {
+      background: linear-gradient(135deg, #00b894, #55efc4);
+    }
+
+    .package-vip {
+      background: linear-gradient(135deg, #e1b12c, #f7d87c);
+    }
+
+    .package-vvip {
+      background: linear-gradient(135deg, #d63031, #ff7675);
+    }
+
+    /* HP tetap kiri–kanan (tidak berubah ke atas–bawah) */
+    @media (max-width: 600px) {
+      .foto-package-wrapper {
+        flex-direction: row;
+        /* tetap horizontal */
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 
@@ -276,10 +358,29 @@
           <label>Nama</label>
           <input type="text" value="Aditya Firmansyah" readonly>
 
-          <label>Foto</label>
-          <img
-            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNIFpE1JNS9Q5_PdKP4wQyJZTMYq9l6wa6gWDjfy8FePfwP_mFjyKEN_LzZrZnptouRUNvuO6YBrXReM8ynwMomVjrGV42-aPjTNqQuH5wL9dugF6E6GpyHSG-n4tp9PU6bUpplotfwXet0CECapOAyx7bas1yHE8Z-BbCynCaidwAXVqwzKRSd7I9/w640-h632/profil%20wa%20kosong.jpg"
-            alt="Foto Profil" id="fotoProfil" class="profile-photo">
+          <div class="foto-package-wrapper">
+
+            <!-- FOTO -->
+            <div class="foto-package-wrapper-col">
+              <label class="label-small">Foto</label>
+              <img
+                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNIFpE1JNS9Q5_PdKP4wQyJZTMYq9l6wa6gWDjfy8FePfwP_mFjyKEN_LzZrZnptouRUNvuO6YBrXReM8ynwMomVjrGV42-aPjTNqQuH5wL9dugF6E6GpyHSG-n4tp9PU6bUpplotfwXet0CECapOAyx7bas1yHE8Z-BbCynCaidwAXVqwzKRSd7I9/w640-h632/profil%20wa%20kosong.jpg"
+                alt="Foto Profil" id="fotoProfil" class="profile-photo">
+            </div>
+
+            <!-- PACKAGE -->
+            <div class="foto-package-wrapper-col">
+              <label class="label-small">Package</label>
+
+              <!-- PILIH SALAH SATU: package-mahasiswa / package-regular / package-vip / package-vvip -->
+              <div class="package-box package-vip">
+                VIP
+              </div>
+            </div>
+
+          </div>
+
+
 
           <label>Email</label>
           <input type="text" value="aditya@bisamedia.com" readonly>
@@ -293,9 +394,6 @@
           <label>Username TikTok</label>
           <input type="text" value="@aditya.firmansyah" readonly>
 
-          <label>Package</label>
-          <input type="text" value="VIP" readonly>
-
           <label>Jam</label>
           <input type="text" id="jamSekarang" readonly>
 
@@ -306,20 +404,20 @@
 
     <!-- 🔹 Popup -->
     <div class="popup" id="popup">
-  <div class="popup-content">
-    <h3>Konfirmasi Absensi</h3>
+      <div class="popup-content">
+        <h3>Konfirmasi Absensi</h3>
 
-    <img id="popupFoto" src="" alt="Foto Konfirmasi">
+        <img id="popupFoto" src="" alt="Foto Konfirmasi">
 
-    <!-- Nama muncul otomatis -->
-    <p id="popupNama" style="margin:10px 0; font-weight:600; color:#004aad;"></p>
+        <!-- Nama muncul otomatis -->
+        <p id="popupNama" style="margin:10px 0; font-weight:600; color:#004aad;"></p>
 
-    <div>
-      <button class="yes" onclick="lanjut()">Ya, Benar</button>
-      <button class="no" onclick="tutupPopup()">Periksa Lagi</button>
+        <div>
+          <button class="yes" onclick="lanjut()">Ya, Benar</button>
+          <button class="no" onclick="tutupPopup()">Periksa Lagi</button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
 
     <!-- 🔹 Footer -->
@@ -375,7 +473,7 @@
     function lanjut() {
       window.location.href = 'berhasil.html';
     }
-</script>
+  </script>
 
 </body>
 
